@@ -4,11 +4,8 @@ import {
   Link,
   createRootRouteWithContext,
   useRouter,
-  HeadContent,
-  Scripts,
 } from "@tanstack/react-router";
 
-import appCss from "../styles.css?url";
 import { SiteNav, SiteFooter } from "@/components/site-nav";
 
 function NotFoundComponent() {
@@ -57,46 +54,10 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
 }
 
 export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()({
-  head: () => ({
-    meta: [
-      { charSet: "utf-8" },
-      { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Aryan Kumar — Mechanical Engineering Portfolio" },
-      {
-        name: "description",
-        content:
-          "Portfolio of Aryan Kumar — mechanical engineer at NIT Trichy. CAD, CAE, FEM, and product design projects.",
-      },
-      { name: "author", content: "Aryan Kumar" },
-      { property: "og:title", content: "Aryan Kumar — Mechanical Engineering Portfolio" },
-      {
-        property: "og:description",
-        content: "CAD, CAE, FEM, and product design projects by Aryan Kumar.",
-      },
-      { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary_large_image" },
-    ],
-    links: [{ rel: "stylesheet", href: appCss }],
-  }),
-  shellComponent: RootShell,
   component: RootComponent,
   notFoundComponent: NotFoundComponent,
   errorComponent: ErrorComponent,
 });
-
-function RootShell({ children }: { children: React.ReactNode }) {
-  return (
-    <html lang="en" className="dark">
-      <head>
-        <HeadContent />
-      </head>
-      <body className="bg-background text-foreground">
-        {children}
-        <Scripts />
-      </body>
-    </html>
-  );
-}
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
@@ -112,3 +73,4 @@ function RootComponent() {
     </QueryClientProvider>
   );
 }
+
