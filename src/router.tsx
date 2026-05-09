@@ -7,7 +7,7 @@ export const getRouter = () => {
 
   const router = createRouter({
     routeTree,
-    basepath: "/",
+    basepath: "/aryan-portfolio",
     context: { queryClient },
     scrollRestoration: true,
     defaultPreloadStaleTime: 0,

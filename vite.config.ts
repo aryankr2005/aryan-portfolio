@@ -5,9 +5,9 @@ import tsconfigPaths from "vite-tsconfig-paths";
 import { tanstackRouter } from "@tanstack/router-plugin/vite";
 
 // Plain Vite + React SPA. Deployed as static files to GitHub Pages under
-// the / subpath. No SSR.
+// the /aryan-portfolio/ subpath. No SSR.
 export default defineConfig({
-  base: "/",
+  base: "/aryan-portfolio/",
   plugins: [
     tanstackRouter({ target: "react", autoCodeSplitting: true }),
     react(),
