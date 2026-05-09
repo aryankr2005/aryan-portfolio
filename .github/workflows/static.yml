@@ -36,14 +36,25 @@ jobs:
         run: npm ci
       - name: Build
         run: npm run build
+      - name: List build output (debug)
+        run: find dist -maxdepth 2 | sort
       - name: Copy index.html to 404.html for SPA routing
-        run: cp dist/index.html dist/404.html
+        run: |
+          if [ -f dist/client/index.html ]; then
+            cp dist/client/index.html dist/client/404.html
+            echo "PAGES_DIR=dist/client" >> $GITHUB_ENV
+          elif [ -f dist/index.html ]; then
+            cp dist/index.html dist/404.html
+            echo "PAGES_DIR=dist" >> $GITHUB_ENV
+          else
+            echo "No index.html found in dist or dist/client" && exit 1
+          fi
       - name: Setup Pages
         uses: actions/configure-pages@v5
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: 'dist'
+          path: ${{ env.PAGES_DIR }}
 
   deploy:
     environment:
