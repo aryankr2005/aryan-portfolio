@@ -3,7 +3,7 @@ import { SceneCanvas } from "@/components/scene-canvas";
 import { SkillsOrbScene } from "@/components/three-scenes";
 import { BlueprintFrame } from "@/components/blueprint-frame";
 import { Button } from "@/components/ui/button";
-import { Award, GraduationCap, Trophy } from "lucide-react";
+import { Award, Briefcase, GraduationCap, Trophy } from "lucide-react";
 
 export const Route = createFileRoute("/skills")({
   head: () => ({
@@ -98,6 +98,18 @@ function SkillsPage() {
           <div className="space-y-6">
             <div className="relative border border-border/70 bg-panel/40 p-5 sm:p-6 corner-ticks">
               <div className="flex items-center gap-3">
+                <Briefcase size={18} className="text-accent" />
+                <div className="font-display text-lg">Internships</div>
+              </div>
+              <ul className="mt-4 space-y-4 text-sm">
+                <li>
+                  <div className="text-foreground">Research Internship</div>
+                  <div className="text-muted-foreground">IIT Hyderabad · 05/2025</div>
+                </li>
+              </ul>
+            </div>
+            <div className="relative border border-border/70 bg-panel/40 p-5 sm:p-6 corner-ticks">
+              <div className="flex items-center gap-3">
                 <Award size={18} className="text-accent" />
                 <div className="font-display text-lg">Certifications</div>
               </div>
@@ -118,6 +130,19 @@ function SkillsPage() {
 
             <div className="relative border border-border/70 bg-panel/40 p-5 sm:p-6 corner-ticks">
               <div className="flex items-center gap-3">
+                <Trophy size={18} className="text-accent" />
+                <div className="font-display text-lg">Achievements</div>
+              </div>
+              <ul className="mt-4 space-y-3 text-sm text-muted-foreground">
+                <li className="flex items-start gap-3">
+                  <span className="font-mono-tech text-accent">★</span> Bajaj TORQ '25 — National
+                  Finalist
+                </li>
+              </ul>
+            </div>
+
+            <div className="relative border border-border/70 bg-panel/40 p-5 sm:p-6 corner-ticks">
+              <div className="flex items-center gap-3">
                 <GraduationCap size={18} className="text-accent" />
                 <div className="font-display text-lg">Education</div>
               </div>
@@ -131,23 +156,6 @@ function SkillsPage() {
                   <div className="text-muted-foreground">
                     St. Dominic Savio's High School · 2021 – 2023
                   </div>
-                </li>
-              </ul>
-            </div>
-
-            <div className="relative border border-border/70 bg-panel/40 p-5 sm:p-6 corner-ticks">
-              <div className="flex items-center gap-3">
-                <Trophy size={18} className="text-accent" />
-                <div className="font-display text-lg">Achievements</div>
-              </div>
-              <ul className="mt-4 space-y-3 text-sm text-muted-foreground">
-                <li className="flex items-start gap-3">
-                  <span className="font-mono-tech text-accent">★</span> Bajaj TORQ '25 — National
-                  Finalist
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="font-mono-tech text-accent">★</span> Research Internship · IIT
-                  Hyderabad · 05/2025
                 </li>
               </ul>
             </div>
