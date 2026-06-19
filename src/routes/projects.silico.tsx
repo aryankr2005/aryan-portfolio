@@ -44,7 +44,7 @@ function SilicoPage() {
           <div className="mt-6 grid gap-8 md:grid-cols-[1.3fr_1fr] md:items-end">
             <div>
               <div className="font-mono-tech text-[10px] uppercase tracking-[0.2em] text-accent sm:text-xs sm:tracking-[0.3em]">
-                Project 02 · CAE · Materials · 03/2025
+                Project 03 · CAE · Materials · 03/2025
               </div>
               <h1 className="mt-4 font-display text-3xl font-bold tracking-tight sm:text-4xl md:text-6xl">
                 Silico Damp
@@ -188,7 +188,7 @@ function SilicoPage() {
               title: "Impact during opening — high damping silicone pad",
             },
           ].map((f) => (
-            <BlueprintFrame key={f.id} label={`FIG. ${f.id}`} className="overflow-hidden">
+            <BlueprintFrame key={f.id} label={`FIG. ${f.id}`}>
               <img
                 src={f.src}
                 alt={f.title}

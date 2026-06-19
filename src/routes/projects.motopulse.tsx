@@ -43,7 +43,7 @@ function MotoPage() {
           <div className="mt-6 grid gap-8 md:grid-cols-[1.3fr_1fr] md:items-end">
             <div>
               <div className="font-mono-tech text-[10px] uppercase tracking-[0.2em] text-accent sm:text-xs sm:tracking-[0.3em]">
-                Project 03 · Mechatronics · 02/2025
+                Project 04 · Mechatronics · 02/2025
               </div>
               <h1 className="mt-4 font-display text-3xl font-bold tracking-tight sm:text-4xl md:text-6xl">
                 MotoPulse
@@ -149,7 +149,7 @@ function MotoPage() {
         <h2 className="mt-2 font-display text-3xl md:text-4xl">CAD references.</h2>
 
         <div className="mt-10 grid gap-8 md:grid-cols-2">
-          <BlueprintFrame label="FIG. 01" className="overflow-hidden">
+          <BlueprintFrame label="FIG. 01">
             <img
               src={bikeImg}
               alt="Bicycle fitted with the electric conversion kit"
@@ -160,7 +160,7 @@ function MotoPage() {
               <FigureCallout id="01" title="Bicycle fitted with the electric conversion kit" />
             </div>
           </BlueprintFrame>
-          <BlueprintFrame label="FIG. 02" className="overflow-hidden">
+          <BlueprintFrame label="FIG. 02">
             <img
               src={spindleImg}
               alt="Custom spindle and pedal shaft assembly"

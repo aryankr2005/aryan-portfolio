@@ -16,6 +16,7 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as ProjectsSilicoRouteImport } from './routes/projects.silico'
 import { Route as ProjectsMotopulseRouteImport } from './routes/projects.motopulse'
 import { Route as ProjectsLumbarRouteImport } from './routes/projects.lumbar'
+import { Route as ProjectsAmrRouteImport } from './routes/projects.amr'
 
 const SkillsRoute = SkillsRouteImport.update({
   id: '/skills',
@@ -52,12 +53,18 @@ const ProjectsLumbarRoute = ProjectsLumbarRouteImport.update({
   path: '/lumbar',
   getParentRoute: () => ProjectsRoute,
 } as any)
+const ProjectsAmrRoute = ProjectsAmrRouteImport.update({
+  id: '/amr',
+  path: '/amr',
+  getParentRoute: () => ProjectsRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/contact': typeof ContactRoute
   '/projects': typeof ProjectsRouteWithChildren
   '/skills': typeof SkillsRoute
+  '/projects/amr': typeof ProjectsAmrRoute
   '/projects/lumbar': typeof ProjectsLumbarRoute
   '/projects/motopulse': typeof ProjectsMotopulseRoute
   '/projects/silico': typeof ProjectsSilicoRoute
@@ -67,6 +74,7 @@ export interface FileRoutesByTo {
   '/contact': typeof ContactRoute
   '/projects': typeof ProjectsRouteWithChildren
   '/skills': typeof SkillsRoute
+  '/projects/amr': typeof ProjectsAmrRoute
   '/projects/lumbar': typeof ProjectsLumbarRoute
   '/projects/motopulse': typeof ProjectsMotopulseRoute
   '/projects/silico': typeof ProjectsSilicoRoute
@@ -77,6 +85,7 @@ export interface FileRoutesById {
   '/contact': typeof ContactRoute
   '/projects': typeof ProjectsRouteWithChildren
   '/skills': typeof SkillsRoute
+  '/projects/amr': typeof ProjectsAmrRoute
   '/projects/lumbar': typeof ProjectsLumbarRoute
   '/projects/motopulse': typeof ProjectsMotopulseRoute
   '/projects/silico': typeof ProjectsSilicoRoute
@@ -88,6 +97,7 @@ export interface FileRouteTypes {
     | '/contact'
     | '/projects'
     | '/skills'
+    | '/projects/amr'
     | '/projects/lumbar'
     | '/projects/motopulse'
     | '/projects/silico'
@@ -97,6 +107,7 @@ export interface FileRouteTypes {
     | '/contact'
     | '/projects'
     | '/skills'
+    | '/projects/amr'
     | '/projects/lumbar'
     | '/projects/motopulse'
     | '/projects/silico'
@@ -106,6 +117,7 @@ export interface FileRouteTypes {
     | '/contact'
     | '/projects'
     | '/skills'
+    | '/projects/amr'
     | '/projects/lumbar'
     | '/projects/motopulse'
     | '/projects/silico'
@@ -169,16 +181,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ProjectsLumbarRouteImport
       parentRoute: typeof ProjectsRoute
     }
+    '/projects/amr': {
+      id: '/projects/amr'
+      path: '/amr'
+      fullPath: '/projects/amr'
+      preLoaderRoute: typeof ProjectsAmrRouteImport
+      parentRoute: typeof ProjectsRoute
+    }
   }
 }
 
 interface ProjectsRouteChildren {
+  ProjectsAmrRoute: typeof ProjectsAmrRoute
   ProjectsLumbarRoute: typeof ProjectsLumbarRoute
   ProjectsMotopulseRoute: typeof ProjectsMotopulseRoute
   ProjectsSilicoRoute: typeof ProjectsSilicoRoute
 }
 
 const ProjectsRouteChildren: ProjectsRouteChildren = {
+  ProjectsAmrRoute: ProjectsAmrRoute,
   ProjectsLumbarRoute: ProjectsLumbarRoute,
   ProjectsMotopulseRoute: ProjectsMotopulseRoute,
   ProjectsSilicoRoute: ProjectsSilicoRoute,

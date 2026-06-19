@@ -399,6 +399,102 @@ export function MotoPulseScene({ exploded }: { exploded: boolean }) {
   );
 }
 
+/* ---------- AMR: exploded robot assembly ---------- */
+export function AMRScene({ exploded }: { exploded: boolean }) {
+  const g = useRef<THREE.Group>(null);
+  useFrame((s) => {
+    if (g.current) g.current.rotation.y = s.clock.elapsedTime * 0.25;
+  });
+  const e = exploded ? 1 : 0;
+  return (
+    <>
+      <ambientLight intensity={0.5} />
+      <pointLight position={[4, 4, 4]} color={ACCENT} intensity={2.5} />
+      <pointLight position={[-3, -2, 3]} color="#3b82f6" intensity={1.2} />
+      <group ref={g}>
+        {/* Sensor indicators (top LEDs) */}
+        {(
+          [
+            [-0.72, -0.72, "#22c55e"],
+            [0.72, -0.72, "#ef4444"],
+            [-0.72, 0.72, "#3b82f6"],
+            [0.72, 0.72, "#eab308"],
+          ] as [number, number, string][]
+        ).map(([x, z, color], i) => (
+          <mesh key={i} position={[x, 0.75 + e * 1.5, z]}>
+            <sphereGeometry args={[0.08, 12, 12]} />
+            <meshStandardMaterial color={color} emissive={color} emissiveIntensity={1.2} />
+          </mesh>
+        ))}
+        {/* Navigation sensor dome */}
+        <mesh position={[0, 0.78 + e * 1.5, 0]}>
+          <cylinderGeometry args={[0.22, 0.25, 0.2, 24]} />
+          <meshStandardMaterial color="#374151" metalness={0.4} roughness={0.5} />
+          <Edges color={ACCENT} />
+        </mesh>
+        {/* Top lid / outer cover (ABS — blue) */}
+        <mesh position={[0, 0.55 + e * 1.2, 0]}>
+          <boxGeometry args={[2.2, 0.15, 2.2]} />
+          <meshStandardMaterial color="#1d4ed8" metalness={0.1} roughness={0.6} />
+          <Edges color={ACCENT} />
+        </mesh>
+        {/* Main body (ABS — blue) */}
+        <mesh position={[0, 0.0 + e * 0.4, 0]}>
+          <boxGeometry args={[2.2, 0.85, 2.2]} />
+          <meshStandardMaterial color="#1e40af" metalness={0.15} roughness={0.6} />
+          <Edges color={ACCENT} />
+        </mesh>
+        {/* Electronics tray (PCB — orange) */}
+        <mesh position={[0, 0.05, 0]}>
+          <boxGeometry args={[1.6, 0.06, 1.4]} />
+          <meshStandardMaterial
+            color="#f97316"
+            emissive="#f97316"
+            emissiveIntensity={0.25}
+            transparent
+            opacity={exploded ? 0.95 : 0.25}
+          />
+        </mesh>
+        {/* Chassis (Al 6061-T6 — gray) */}
+        <mesh position={[0, -0.55 - e * 0.5, 0]}>
+          <boxGeometry args={[2.0, 0.35, 2.0]} />
+          <meshStandardMaterial color="#6b7280" metalness={0.7} roughness={0.3} />
+          <Edges color={ACCENT} />
+        </mesh>
+        {/* Drive wheels ×2 (Natural Rubber — black) */}
+        {([-1.15, 1.15] as number[]).map((x, i) => (
+          <group key={i} position={[x, -0.56 - e * 0.5, 0]}>
+            <mesh rotation={[0, 0, Math.PI / 2]}>
+              <cylinderGeometry args={[0.38, 0.38, 0.22, 32]} />
+              <meshStandardMaterial color="#111827" roughness={0.95} />
+              <Edges color={ACCENT} />
+            </mesh>
+            {/* Axle (AISI 1020 Steel) */}
+            <mesh rotation={[0, 0, Math.PI / 2]}>
+              <cylinderGeometry args={[0.08, 0.08, 0.55, 16]} />
+              <meshStandardMaterial color="#9ca3af" metalness={0.9} roughness={0.1} />
+            </mesh>
+          </group>
+        ))}
+        {/* Caster wheels ×4 (Polyurethane) */}
+        {(
+          [
+            [-0.75, -0.75],
+            [0.75, -0.75],
+            [-0.75, 0.75],
+            [0.75, 0.75],
+          ] as [number, number][]
+        ).map(([x, z], i) => (
+          <mesh key={i} position={[x, -0.75 - e * 0.5, z]}>
+            <sphereGeometry args={[0.16, 16, 12]} />
+            <meshStandardMaterial color="#e5e7eb" metalness={0.05} roughness={0.6} />
+          </mesh>
+        ))}
+      </group>
+    </>
+  );
+}
+
 /* ---------- Skills orb ---------- */
 export function SkillsOrbScene() {
   const g = useRef<THREE.Group>(null);

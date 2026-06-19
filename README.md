@@ -2,7 +2,7 @@
 
 Interactive mechanical engineering portfolio built with TanStack Start, React 19, Vite, and Three.js.
 
-The site presents Aryan Kumar's work across CAD, CAE, FEM simulation, and product design, including dedicated project pages for lumbar spine vibration analysis, Silico Damp, and MotoPulse.
+The site presents Aryan Kumar's work across CAD, CAE, FEM simulation, and product design, including dedicated project pages.
 
 ## Tech Stack
 

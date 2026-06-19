@@ -44,7 +44,7 @@ function LumbarPage() {
           <div className="mt-6 grid gap-8 md:grid-cols-[1.3fr_1fr] md:items-end">
             <div>
               <div className="font-mono-tech text-[10px] uppercase tracking-[0.2em] text-accent sm:text-xs sm:tracking-[0.3em]">
-                Project 01 · FEM · IIT Hyderabad Internship · 05/2025
+                Project 02 · FEM · IIT Hyderabad Internship · 05/2025
               </div>
               <h1 className="mt-4 font-display text-3xl font-bold tracking-tight sm:text-4xl md:text-6xl">
                 Lumbar Spine Whole-Body Vibration Study
@@ -175,7 +175,7 @@ function LumbarPage() {
             },
             { src: lumbarDeformation, id: "04", title: "Total deformation under variable forces" },
           ].map((f) => (
-            <BlueprintFrame key={f.id} label={`FIG. ${f.id}`} className="overflow-hidden">
+            <BlueprintFrame key={f.id} label={`FIG. ${f.id}`}>
               <img
                 src={f.src}
                 alt={f.title}
@@ -210,7 +210,10 @@ function LumbarPage() {
           </ol>
         </div>
 
-        <NavBetweenProjects prev={null} next={{ to: "/projects/silico", label: "Silico Damp" }} />
+        <NavBetweenProjects
+          prev={{ to: "/projects/amr", label: "AMR" }}
+          next={{ to: "/projects/silico", label: "Silico Damp" }}
+        />
       </section>
     </article>
   );

@@ -1,4 +1,4 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute, Link, Outlet, useLocation } from "@tanstack/react-router";
 import { SceneCanvas } from "@/components/scene-canvas";
 import { ProjectsTrio } from "@/components/three-scenes";
 import { BlueprintFrame } from "@/components/blueprint-frame";
@@ -21,13 +21,29 @@ export const Route = createFileRoute("/projects")({
       },
     ],
   }),
-  component: ProjectsPage,
+  component: ProjectsRouteComponent,
 });
+
+function ProjectsRouteComponent() {
+  const { pathname } = useLocation();
+  const isProjectsIndex = /\/projects\/?$/.test(pathname);
+
+  return isProjectsIndex ? <ProjectsPage /> : <Outlet />;
+}
 
 const projects = [
   {
-    to: "/projects/lumbar" as const,
+    to: "/projects/amr" as const,
     no: "01",
+    tag: "CAD · Mechanical Design",
+    title: "Autonomous Mobile Robot",
+    summary:
+      "Compact AMR with a 2-drive + 4-caster differential drive, Al 6061-T6 chassis, and 12.8 V LiFePO₄ battery — designed for 20 kg payload within a 500 × 500 × 500 mm envelope.",
+    stats: ["20 kg payload", "500³ mm envelope", "38.47 kg total"],
+  },
+  {
+    to: "/projects/lumbar" as const,
+    no: "02",
     tag: "FEM · Biomechanics · IIT Hyderabad",
     title: "Lumbar Spine Vibration Study",
     summary:
@@ -36,7 +52,7 @@ const projects = [
   },
   {
     to: "/projects/silico" as const,
-    no: "02",
+    no: "03",
     tag: "CAE · Materials · Product",
     title: "Silico Damp",
     summary:
@@ -45,7 +61,7 @@ const projects = [
   },
   {
     to: "/projects/motopulse" as const,
-    no: "03",
+    no: "04",
     tag: "Mechatronics · Mechanical Design",
     title: "MotoPulse",
     summary:
@@ -68,7 +84,7 @@ function ProjectsPage() {
               Projects.
             </h1>
             <p className="mt-4 max-w-md text-muted-foreground">
-              Three engineering case studies — each anchored in CAD, validated by simulation, and
+              Four engineering case studies — each anchored in CAD, validated by simulation, and
               documented as if it were going to a manufacturing line.
             </p>
           </div>
