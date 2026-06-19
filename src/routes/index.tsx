@@ -195,6 +195,12 @@ function IndexPage() {
           <div className="mt-10 grid gap-6 md:grid-cols-3">
             {[
               {
+                to: "/projects/amr",
+                tag: "CAD · Mechanical Design",
+                title: "Autonomous Mobile Robot",
+                body: "Compact AMR for 20 kg payloads with differential drive and packaged autonomy hardware.",
+              },
+              {
                 to: "/projects/lumbar",
                 tag: "FEM · Biomech",
                 title: "Lumbar Spine Vibration Study",
@@ -205,13 +211,7 @@ function IndexPage() {
                 tag: "CAE · Materials",
                 title: "Silico Damp",
                 body: "Silicone elastomer dampener for motorcycle stands. ~30–40% noise reduction.",
-              },
-              {
-                to: "/projects/motopulse",
-                tag: "Mechatronics",
-                title: "MotoPulse",
-                body: "Universal mid-drive e-bike conversion with custom pin-lock spindle.",
-              },
+              }
             ].map((p) => (
               <article
                 key={p.to}
